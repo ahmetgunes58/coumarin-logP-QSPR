@@ -114,6 +114,15 @@ scripts/analysis/external_metrics.py
 scripts/modeling/24_plot_residual_external.py  
 scripts/modeling/25_extract_top_scaffolds.py  
 
+Supplementary Figure S8 (TPSA–SHAP scatter plot used for interpretability analysis) is generated using:
+
+`scripts/modeling/26_plot_tpsa_shap_scatter.py`
+
+Output files:
+
+- `figures/supplementary/Figure_S8_tpsa_shap_scatter.png`
+- `figures/supplementary/Figure_S8_tpsa_shap_scatter.tiff`
+
 Running the full pipeline starting from the frozen dataset reproduces the trained models, evaluation metrics, tables, and figures reported in the manuscript.
 
 ---
