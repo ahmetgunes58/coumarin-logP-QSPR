@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-03-09T08:33:22",
+  "inputs": {
+    "frozen": "dataset_v1_frozen_scaffoldfix_v2.csv",
+    "manifest": "splits_manifest.csv"
+  },
+  "rdkit": {
+    "version": "2025.03.6"
+  },
+  "features": {
+    "ecfp": {
+      "type": "Morgan",
+      "radius": 2,
+      "nBits": 2048,
+      "binary": true
+    },
+    "physchem": {
+      "columns": [
+        "MW",
+        "TPSA",
+        "HBD",
+        "HBA",
+        "RotB",
+        "AromaticRings",
+        "FractionCSP3",
+        "MR",
+        "RingCount",
+        "HeavyAtomCount"
+      ],
+      "scaling": "z-score scaling fitted on training folds only"
+    }
+  },
+  "outputs": {
+    "model_table": "data/features/model_table_v1.csv.gz",
+    "features_physchem": "data/features/features_physchem_v1.csv.gz",
+    "features_ecfp": "data/features/features_ecfp2048_r2_v1.csv.gz"
+  },
+  "schema": {
+    "target": "logP_median",
+    "roles": "external_role / set_role",
+    "cv": "outer_fold",
+    "group": "Murcko_scaffold_ID"
+  }
+}

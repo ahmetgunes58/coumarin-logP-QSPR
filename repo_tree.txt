@@ -1,0 +1,139 @@
+Folder PATH listing for volume OS
+Volume serial number is A2B7-77A5
+C:.
+|   README_reproducibility.md
+|   repo_tree.txt
+|   
++---data
+|   |   dataset_v1_frozen_scaffoldfix_v2.csv
+|   |   exclusions_v1.csv
+|   |   scaffold_groups.csv
+|   |   splits_manifest.csv
+|   |   swissadme_raw_v1.csv
+|   |   
+|   +---features
+|   |       features_ecfp2048_r2_v1.csv.gz
+|   |       features_physchem_v1.csv.gz
+|   |       model_table_v1.csv.gz
+|   |       
+|   +---metadata
+|   |       checksums_stage2.sha256
+|   |       feature_metadata.json
+|   |       
+|   \---reports
+|           checksums_stage2.sha256
+|           feature_metadata.json
+|           
++---docs
++---environment
++---figures
+|   +---main
+|   |   \---stage7
+|   |       \---20260309_102934
+|   |               Fig01_dataset_curation.pdf
+|   |               Fig01_dataset_curation.png
+|   |               Fig01_panelD_scaffold_mapping.csv
+|   |               Fig02_chemical_space_pca.pdf
+|   |               Fig02_chemical_space_pca.png
+|   |               Fig03_tpsa_vs_mw_roles.pdf
+|   |               Fig03_tpsa_vs_mw_roles.png
+|   |               Fig04_pred_vs_obs.pdf
+|   |               Fig04_pred_vs_obs.png
+|   |               Fig05_applicability_domain.pdf
+|   |               Fig05_applicability_domain.png
+|   |               Fig06_y_scrambling.pdf
+|   |               Fig06_y_scrambling.png
+|   |               Fig07_shap_physchem_importance.pdf
+|   |               Fig07_shap_physchem_importance.png
+|   |               Fig08_shap_physchem_direction.pdf
+|   |               Fig08_shap_physchem_direction.png
+|   |               Fig09_baseline_benchmark.pdf
+|   |               Fig09_baseline_benchmark.png
+|   |               Fig10_ablation_summary.pdf
+|   |               Fig10_ablation_summary.png
+|   |               stage7_manifest_v2.json
+|   |               
+|   \---supplementary
+|       |   Figure_S6_residual_plot.png
+|       |   Figure_S6_residual_plot.tiff
+|       |   
+|       \---stage7
+|           \---20260308_234007
+|                   FigS5_applicability_domain.pdf
+|                   FigS5_applicability_domain.png
+|                   FigS6_residual_distribution.pdf
+|                   FigS6_residual_distribution.png
+|                   FigS7_scaffold_gallery.pdf
+|                   FigS7_scaffold_gallery.png
+|                   
++---results
+|   +---ablation
+|   |   |   ablation_feature_sets_v1.csv
+|   |   |   ablation_model_panel_v1.csv
+|   |   |   ablation_results.xlsx
+|   |   |   ablation_split_comparison_v1.csv
+|   |   |   stage6_notes_v1.md
+|   |   |   
+|   |   \---applicability_domain
+|   |           similarity_error_bins.csv
+|   |           
+|   +---benchmark_swissadme
+|   |       baseline_benchmark_table_v1.csv
+|   |       fig_baseline_benchmark_rmse_v1.png
+|   |       
+|   +---cv
+|   +---external_validation
+|   |   \---20260309_083841
+|   |           configs.json
+|   |           metrics_external_final.csv
+|   |           metrics_outercv.csv
+|   |           predictions_external_byfold.csv
+|   |           predictions_external_final.csv
+|   |           predictions_outercv.csv
+|   |           
+|   +---interpretability
+|   |       shap_global_full_v1.csv
+|   |       shap_physchem_direction_v1.csv
+|   |       shap_physchem_global_v1.csv
+|   |       shap_physchem_per_compound_v1.csv.gz
+|   |       stage5_3_notes_shap_v1.md
+|   |       
+|   +---models
+|   +---scaffold_analysis
+|   |       scaffold_counts_all_v1.csv
+|   |       scaffold_top10_mapping_v1.csv
+|   |       scaffold_top10_v1.csv
+|   |       
+|   +---stage5_freeze_v1
+|   |       feature_importance_gain_v1.csv
+|   |       feature_metadata_v1.json
+|   |       final_xgb_model_v1.pkl
+|   |       training_predictions_v1.csv
+|   |       
+|   \---y_scrambling
+|           fig_y_scrambling_final_hybridxgb_v2.png
+|           y_scrambling_results_final_hybridxgb_v2.csv
+|           y_scrambling_summary_final_hybridxgb_v2.json
+|           
+\---scripts
+    +---analysis
+    |       external_metrics.py
+    |       
+    +---data_processing
+    |       01_replicate_collapse_and_freeze.py
+    |       02_make_scaffolds.py
+    |       03_make_splits_manifest.py
+    |       04_build_features_v1.py
+    |       05_make_fold_scalers_v1.py
+    |       
+    \---modeling
+            06_train_stage3_panel_v1.py
+            09_stage4_y_scrambling_v1.py
+            13_stage4_benchmark_swissadme_v1.py
+            16_stage5_freeze_final_model_v1.py
+            21_stage5_3_shap_physchem_direction_v1.py
+            22_stage6_ablation_v1.py
+            23_stage7_generate_figures_v2_FINAL.py
+            24_plot_residual_external.py
+            25_extract_top_scaffolds.py
+            

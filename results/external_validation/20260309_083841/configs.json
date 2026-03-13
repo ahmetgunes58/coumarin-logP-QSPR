@@ -1,0 +1,63 @@
+{
+  "timestamp": "20260309_083841",
+  "inputs": {
+    "model_table": "data/features/model_table_v1.csv.gz"
+  },
+  "panel": {
+    "ridge": {
+      "features": "PhysChem(zscore)",
+      "alpha": 1.0
+    },
+    "krr": {
+      "kernel": "Tanimoto",
+      "features": "ECFP2048",
+      "alphas": [
+        0.01,
+        0.1,
+        1,
+        10,
+        100
+      ]
+    },
+    "xgb": {
+      "features": "ECFP2048 + PhysChem(zscore)",
+      "depths": [
+        3,
+        4
+      ],
+      "n_estimators_inner_cv": 2000,
+      "n_estimators_final": 3000,
+      "learning_rate": 0.03,
+      "reg_lambda": 10.0,
+      "min_child_weight": 5.0,
+      "gamma": 0.0,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "random_state": 42
+    },
+    "inner_cv": {
+      "n_splits": 3,
+      "method": "StratifiedGroupKFold",
+      "strata": "Tier",
+      "groups": "Murcko_scaffold_ID"
+    },
+    "outer_cv": {
+      "n_splits": 5,
+      "pool": "set_role == NONE"
+    },
+    "external_policy": "Train once on full NONE pool; predict EXT_A, EXT_B, OOD once",
+    "metrics": [
+      "RMSE",
+      "MAE",
+      "R2",
+      "CCC"
+    ]
+  },
+  "outputs": {
+    "metrics_outercv": "metrics_outercv.csv",
+    "predictions_outercv": "predictions_outercv.csv",
+    "predictions_external_byfold": "predictions_external_byfold.csv",
+    "predictions_external_final": "predictions_external_final.csv",
+    "metrics_external_final": "metrics_external_final.csv"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "stage": "Stage-7",
+  "level": "publication-ready stable",
+  "timestamp": "20260309_102934",
+  "outdir": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934",
+  "final_model_label": "Hybrid-XGB (ECFP2048 r=2 + PhysChem)",
+  "figures": {
+    "Fig01_dataset_curation": {
+      "inputs": [
+        "C:\\JMGM\\data\\dataset_v1_frozen_scaffoldfix_v2.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig01_dataset_curation.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig01_dataset_curation.pdf"
+      },
+      "extras": {
+        "panelD_mapping_csv": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig01_panelD_scaffold_mapping.csv"
+      }
+    },
+    "Fig02_chemical_space_pca": {
+      "inputs": [
+        "C:\\JMGM\\data\\dataset_v1_frozen_scaffoldfix_v2.csv",
+        "C:\\JMGM\\data\\features\\model_table_v1.csv.gz"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig02_chemical_space_pca.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig02_chemical_space_pca.pdf"
+      },
+      "extras": {}
+    },
+    "Fig03_tpsa_vs_mw_roles": {
+      "inputs": [
+        "C:\\JMGM\\data\\dataset_v1_frozen_scaffoldfix_v2.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig03_tpsa_vs_mw_roles.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig03_tpsa_vs_mw_roles.pdf"
+      },
+      "extras": {}
+    },
+    "Fig04_pred_vs_obs": {
+      "inputs": [
+        "C:\\JMGM\\results\\external_validation\\20260309_083841\\predictions_external_final.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig04_pred_vs_obs.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig04_pred_vs_obs.pdf"
+      },
+      "extras": {}
+    },
+    "Fig05_applicability_domain": {
+      "inputs": [
+        "C:\\JMGM\\results\\ablation\\applicability_domain\\similarity_error_bins.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig05_applicability_domain.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig05_applicability_domain.pdf"
+      },
+      "extras": {}
+    },
+    "Fig06_y_scrambling": {
+      "inputs": [
+        "C:\\JMGM\\results\\y_scrambling\\y_scrambling_results_final_hybridxgb_v2.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig06_y_scrambling.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig06_y_scrambling.pdf"
+      },
+      "extras": {}
+    },
+    "Fig07_shap_physchem_importance": {
+      "inputs": [
+        "C:\\JMGM\\results\\interpretability\\shap_physchem_global_v1.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig07_shap_physchem_importance.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig07_shap_physchem_importance.pdf"
+      },
+      "extras": {}
+    },
+    "Fig08_shap_physchem_direction": {
+      "inputs": [
+        "C:\\JMGM\\results\\interpretability\\shap_physchem_direction_v1.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig08_shap_physchem_direction.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig08_shap_physchem_direction.pdf"
+      },
+      "extras": {}
+    },
+    "Fig09_baseline_benchmark": {
+      "inputs": [
+        "C:\\JMGM\\results\\benchmark_swissadme\\baseline_benchmark_table_v1.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig09_baseline_benchmark.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig09_baseline_benchmark.pdf"
+      },
+      "extras": {}
+    },
+    "Fig10_ablation_summary": {
+      "inputs": [
+        "C:\\JMGM\\results\\ablation\\ablation_model_panel_v1.csv"
+      ],
+      "outputs": {
+        "png": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig10_ablation_summary.png",
+        "pdf": "C:\\JMGM\\figures\\main\\stage7\\20260309_102934\\Fig10_ablation_summary.pdf"
+      },
+      "extras": {}
+    }
+  }
+}

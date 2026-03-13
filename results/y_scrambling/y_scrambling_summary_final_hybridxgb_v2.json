@@ -1,0 +1,32 @@
+{
+  "model": "Hybrid-XGB (ECFP2048 r=2 + PhysChem)",
+  "model_table": "data/features/model_table_v1.csv.gz",
+  "train_pool": "NONE",
+  "train_n": 69,
+  "n_perm": 200,
+  "seed": 42,
+  "real_RMSE": 0.8253255763813561,
+  "real_MAE": 0.6395985521849956,
+  "real_CCC": 0.6391594894330583,
+  "scrambled_mean_RMSE": 1.4562793875998543,
+  "scrambled_std_RMSE": 0.14068791253224416,
+  "scrambled_min_RMSE": 1.1633819760751274,
+  "scrambled_max_RMSE": 1.8371432683443074,
+  "empirical_p": 0.004975124378109453,
+  "xgb_params": {
+    "max_depth": 4,
+    "n_estimators": 3000,
+    "learning_rate": 0.03,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 10.0,
+    "min_child_weight": 5.0,
+    "gamma": 0.0,
+    "random_state": 42
+  },
+  "outputs": {
+    "results_csv": "y_scrambling_results_final_hybridxgb_v2.csv",
+    "summary_json": "y_scrambling_summary_final_hybridxgb_v2.json",
+    "figure_png": "fig_y_scrambling_final_hybridxgb_v2.png"
+  }
+}

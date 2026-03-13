@@ -1,0 +1,35 @@
+name: coumarin_logp_qspr
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+
+  # core scientific libraries
+  - numpy
+  - pandas
+  - scipy
+
+  # cheminformatics
+  - rdkit=2025.03.6
+
+  # machine learning
+  - scikit-learn
+  - xgboost
+
+  # model interpretability
+  - shap
+
+  # plotting
+  - matplotlib
+  - seaborn
+
+  # utilities
+  - joblib
+  - tqdm
+
+  # notebook support (optional but useful)
+  - jupyter
+  - ipykernel

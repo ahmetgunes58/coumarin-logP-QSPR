@@ -1,0 +1,49 @@
+{
+  "inputs": {
+    "frozen_dataset": "data\\dataset_v1_frozen_scaffoldfix_v2.csv",
+    "split_manifest": "data\\splits_manifest.csv"
+  },
+  "rdkit": {
+    "version": "2025.03.6"
+  },
+  "features": {
+    "ecfp": {
+      "type": "Morgan",
+      "radius": 2,
+      "nBits": 2048,
+      "binary": true
+    },
+    "physchem": {
+      "columns": [
+        "MW",
+        "TPSA",
+        "HBD",
+        "HBA",
+        "RotB",
+        "AromaticRings",
+        "FractionCSP3",
+        "MR",
+        "RingCount",
+        "HeavyAtomCount"
+      ],
+      "scaling": "z-score scaling is fitted later on the training split only"
+    }
+  },
+  "outputs": {
+    "model_table": "data\\features\\model_table_v1.csv.gz",
+    "features_physchem": "data\\features\\features_physchem_v1.csv.gz",
+    "features_ecfp": "data\\features\\features_ecfp2048_r2_v1.csv.gz"
+  },
+  "schema": {
+    "target": "logP_median",
+    "roles": {
+      "external_role": "external evaluation designation",
+      "set_role": "training/test role from split manifest"
+    },
+    "cv_group": "Murcko_scaffold_ID",
+    "cv_fold": "outer_fold"
+  },
+  "n_rows": 95,
+  "n_physchem_features": 10,
+  "n_ecfp_bits": 2048
+}

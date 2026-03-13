@@ -1,0 +1,9 @@
+{
+  "seed": 42,
+  "n_train": 69,
+  "n_features": 2058,
+  "n_ecfp": 2048,
+  "n_physchem": 10,
+  "dataset": "C:\\JMGM\\data\\dataset_v1_frozen_scaffoldfix_v2.csv",
+  "model_table": "C:\\JMGM\\data\\features\\model_table_v1.csv.gz"
+}
