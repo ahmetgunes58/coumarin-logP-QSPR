@@ -1,3 +1,4 @@
+> **Reproducibility note:** The exact repository version corresponding to the JMGM manuscript submission is archived as the GitHub release **submission-jmgm-v1**.
 
 # Coumarin Lipophilicity QSPR — Reproducible Modelling Workflow
 
