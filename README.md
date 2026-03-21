@@ -30,7 +30,6 @@ The repository provides the full modelling pipeline required to reproduce the re
 # Repository Structure
 
 
-JMGM/
 
 data/
 dataset_v1_frozen_scaffoldfix_v2.csv
