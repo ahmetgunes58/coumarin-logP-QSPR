@@ -139,7 +139,7 @@ Typical predictive performance on the independent external validation set (n = 1
 
 RMSE ≈ 0.433 log units  
 MAE ≈ 0.365  
-CCC ≈ 0.496  
+CCC ≈ 0.502  
 
 Model robustness was evaluated using multiple validation procedures:
 
@@ -148,7 +148,16 @@ Model robustness was evaluated using multiple validation procedures:
 • applicability-domain analysis  
 • permutation-based Y-scrambling (200 permutations)
 
-Validation results are available in:
+
+
+The manuscript-aligned combined external validation subset is provided at:
+
+```text
+results/external_validation/final_EXTA_EXTB_n19/
+```
+
+This folder contains the exact EXT-A + EXT-B (n = 19) source data, metrics, and regenerated Figure 4 used in the revised manuscript.
+\nValidation results are available in:
 
 results/external_validation  
 results/y_scrambling  
