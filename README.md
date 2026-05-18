@@ -114,6 +114,14 @@ Figure_04_pred_vs_observed_external_HybridXGB_EXTA_EXTB_n19.svg
 ```
 
 The broader directory `results/external_validation/20260309_083841/` is retained as an audit trail for external/OOD prediction outputs. For the revised manuscript Figure 4 and the reported external validation metrics, use `results/external_validation/final_EXTA_EXTB_n19/`.
+
+Final revised manuscript Figure 4 is generated using:
+
+```text
+scripts/modeling/27_generate_final_figure4_exta_extb_n19.py
+```
+
+This script should be run after the general stage-7 figure script to ensure that the manuscript-aligned EXT-A + EXT-B (n = 19) Figure 4 is retained.
 \n---
 
 # Dataset
