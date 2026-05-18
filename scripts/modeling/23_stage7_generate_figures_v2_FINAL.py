@@ -136,33 +136,28 @@ def set_pub_style():
     })
 
 
-def save_fig(fig: plt.Figure, out_base: Path, manifest: Dict, key: str):
-    out_base = Path(out_base)
-    if out_base.suffix:
-        out_base = out_base.with_suffix("")
+def save_fig(fig, path_base: Path, manifest: dict, key: str):
+    """Save publication-quality figure outputs.
 
-    png = out_base.with_suffix(".png")
-    pdf = out_base.with_suffix(".pdf")
+    PNG is saved at the global savefig.dpi setting.
+    PDF and SVG are vector outputs for journal/repository use.
+    """
+    png = path_base.with_suffix(".png")
+    pdf = path_base.with_suffix(".pdf")
+    svg = path_base.with_suffix(".svg")
 
-    try:
-        fig.subplots_adjust(left=0.12, right=0.98, top=0.90, bottom=0.18)
-    except Exception:
-        pass
+    png.parent.mkdir(parents=True, exist_ok=True)
 
     fig.savefig(png, bbox_inches="tight")
     fig.savefig(pdf, bbox_inches="tight")
+    fig.savefig(svg, bbox_inches="tight")
     plt.close(fig)
 
-    manifest["figures"][key]["outputs"] = {"png": str(png), "pdf": str(pdf)}
-
-    if COPY_TO_FINAL_LOCKED:
-        try:
-            FINAL_LOCKED_DIR.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(png, FINAL_LOCKED_DIR / f"{key}.png")
-            shutil.copy2(pdf, FINAL_LOCKED_DIR / f"{key}.pdf")
-        except Exception:
-            pass
-
+    manifest["figures"][key]["outputs"] = {
+        "png": str(png),
+        "pdf": str(pdf),
+        "svg": str(svg),
+    }
 
 def placeholder_figure(title: str, lines: List[str]) -> plt.Figure:
     fig = plt.figure(figsize=(6.5, 3.6))
@@ -306,7 +301,7 @@ def fig01_dataset_curation(ds: pd.DataFrame, manifest: Dict, outdir: Path):
     ax1 = fig.add_subplot(gs[0, 0])
     if role_col:
         roles = _normalize_role_values(ds[role_col])
-        order = ["Training", "EXT_A", "EXT_B", "OOD"]
+        order = ["Training", "EXT-A", "EXT-B", "OOD"]
         counts = roles.value_counts()
         labels = [r for r in order if r in counts.index] + [r for r in counts.index if r not in order]
         vals = [int(counts[r]) for r in labels]
@@ -372,7 +367,7 @@ def fig01_dataset_curation(ds: pd.DataFrame, manifest: Dict, outdir: Path):
         ax4.text(0.5, 0.5, "Murcko scaffold column not found", ha="center", va="center")
         ax4.axis("off")
 
-    fig.suptitle("Figure 01 — Dataset curation", y=0.98)
+    # Figure title removed; caption is provided in the manuscript/SI.
     save_fig(fig, outdir / key, manifest, key)
 
 
@@ -417,7 +412,7 @@ def fig02_chemical_space_pca(ds: pd.DataFrame, mt: pd.DataFrame, manifest: Dict,
     else:
         ax.scatter(Z[:, 0], Z[:, 1], s=18, alpha=0.85)
 
-    ax.set_title("Figure 02 — Chemical space (PCA on PhysChem)")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_xlabel(f"PC1 ({pca.explained_variance_ratio_[0] * 100:.1f}%)")
     ax.set_ylabel(f"PC2 ({pca.explained_variance_ratio_[1] * 100:.1f}%)")
     ax.grid(True, alpha=0.25)
@@ -452,7 +447,7 @@ def fig03_tpsa_vs_mw_roles(ds: pd.DataFrame, manifest: Dict, outdir: Path):
         ax.scatter(mw, tpsa, s=20, alpha=0.85)
 
     ax.axhline(150, linestyle="--")
-    ax.set_title("Figure 03 — TPSA vs MW (OOD: TPSA>150)")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_xlabel("MW")
     ax.set_ylabel("TPSA")
     ax.grid(True, alpha=0.25)
@@ -515,7 +510,7 @@ def fig04_pred_vs_obs_auto(ds: pd.DataFrame, manifest: Dict, outdir: Path):
     ax = fig.add_subplot(111)
     ax.scatter(y_true, y_pred, s=22, alpha=0.85)
     add_identity_line(ax, y_true, y_pred)
-    ax.set_title(f"Figure 04 — Predicted vs Observed ({set_label}, {FINAL_MODEL_LABEL})")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_xlabel("Observed logP")
     ax.set_ylabel("Predicted logP")
     ax.grid(True, alpha=0.25)
@@ -594,7 +589,7 @@ def fig05_applicability_domain_auto(manifest: Dict, outdir: Path):
         fig = plt.figure(figsize=(6.4, 4.2))
         ax = fig.add_subplot(111)
         ax.plot(x, y, marker="o")
-        ax.set_title("Figure 05 — Applicability Domain (similarity-bin summary)")
+        # Figure title removed; caption is provided in the manuscript/SI.
         ax.set_xlabel("Nearest-neighbor Tanimoto similarity (bin midpoint)")
         ax.set_ylabel(f"{ycol} (error summary)")
         ax.grid(True, alpha=0.25)
@@ -643,7 +638,7 @@ def fig05_applicability_domain_auto(manifest: Dict, outdir: Path):
         fig = plt.figure(figsize=(6.4, 4.2))
         ax = fig.add_subplot(111)
         ax.plot(x, y, marker="o")
-        ax.set_title("Figure 05 — Applicability Domain (binned similarity–error)")
+        # Figure title removed; caption is provided in the manuscript/SI.
         ax.set_xlabel("Nearest-neighbor Tanimoto similarity (bin center)")
         ax.set_ylabel(err_col)
         ax.grid(True, alpha=0.25)
@@ -685,7 +680,7 @@ def fig05_applicability_domain_auto(manifest: Dict, outdir: Path):
     fig = plt.figure(figsize=(6.4, 4.2))
     ax = fig.add_subplot(111)
     ax.scatter(x, y, s=20, alpha=0.85)
-    ax.set_title("Figure 05 — Applicability Domain (similarity vs error)")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_xlabel(sim_col)
     ax.set_ylabel(err_col)
     ax.grid(True, alpha=0.25)
@@ -750,11 +745,12 @@ def fig06_y_scrambling_auto(manifest: Dict, outdir: Path):
         p_emp = (np.sum(scr_rmse <= real_rmse) + 1.0) / (len(scr_rmse) + 1.0)
         ax.text(0.98, 0.95, f"Real RMSE={real_rmse:.3f}\nempirical p≈{p_emp:.3f}",
                 ha="right", va="top", transform=ax.transAxes, fontsize=8)
-        title = f"Figure 06 — Y-scrambling ({FINAL_MODEL_LABEL})"
+        title = ""
     else:
-        title = "Figure 06 — Y-scrambling (scrambled RMSE distribution)"
+        title = ""
 
-    ax.set_title(title)
+    if title:
+        ax.set_title(title)
     ax.set_xlabel("Scrambled RMSE")
     ax.set_ylabel("Frequency")
     ax.grid(True, alpha=0.25)
@@ -784,7 +780,7 @@ def fig07_shap_importance(manifest: Dict, outdir: Path):
     fig = plt.figure(figsize=(6.8, 4.2))
     ax = fig.add_subplot(111)
     ax.barh(top["feature"].astype(str).tolist(), top["mean_abs_shap"].values)
-    ax.set_title("Figure 07 — Global importance (PhysChem, mean|SHAP|)")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_xlabel("mean(|SHAP|)")
     ax.grid(True, axis="x", alpha=0.25)
 
@@ -815,7 +811,7 @@ def fig08_shap_direction(manifest: Dict, outdir: Path):
     ax = fig.add_subplot(111)
     ax.barh(top["feature"].astype(str).tolist(), top["corr_feature_shap"].values)
     ax.axvline(0, linestyle="--")
-    ax.set_title("Figure 08 — Directionality (corr(feature, SHAP))")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_xlabel("corr(feature value, SHAP contribution)")
     ax.grid(True, axis="x", alpha=0.25)
 
@@ -863,7 +859,7 @@ def fig09_baseline_benchmark_auto(manifest: Dict, outdir: Path):
     fig = plt.figure(figsize=(7.2, 4.2))
     ax = fig.add_subplot(111)
     ax.bar(sub[method_col].astype(str).tolist(), sub[rmse_col].values)
-    ax.set_title("Figure 09 — Baseline benchmark (lower is better)")
+    # Figure title removed; caption is provided in the manuscript/SI.
     ax.set_ylabel("RMSE")
     ax.tick_params(axis="x", rotation=30)
     for t in ax.get_xticklabels():
